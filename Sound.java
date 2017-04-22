@@ -6,19 +6,19 @@ import javax.sound.sampled.Clip;
 
 public class Sound {
 	
-	private Clip clip;
-	
-	public static Sound DrumLoop = new Sound("/bombGame/sounds/DrumBeatMinus19DBLoop.wav");
-	public static Sound CrescendoBeep = new Sound("/bombGame/sounds/idkanymoret.wav");
-	public static Sound Buzzer = new Sound("/bombGame/sounds/Wrong Buzzer.wav");
-	public static Sound HighestBeep = new Sound("/bombGame/sounds/beepHighest.wav");
-	public static Sound HighBeep = new Sound("/bombGame/sounds/BeepHigh.wav");
-	public static Sound LowBeep = new Sound("/bombGame/sounds/beepLow.wav");
-	public static Sound LowestBeep = new Sound("/bombGame/sounds/beepLowest.wav");	
-	public static Sound VictoryLoop = new Sound("/bombGame/sounds/VictoryLoop.wav");
-	//For the lulz
-	public static Sound Bok = new Sound("/bombGame/sounds/chicken-3.wav");
-
+	private Clip clip;	
+	public static Sound[] gameFx = {new Sound("/bombGame/sounds/idkanymoret.wav"),       //0
+									new Sound("/bombGame/sounds/SplashScreenMaybe.wav"), //1
+									new Sound("/bombGame/sounds/Wrong Buzzer.wav"),      //2
+									new Sound("/bombGame/sounds/beepHighest.wav"),       //3
+									new Sound("/bombGame/sounds/BeepHigh.wav"),          //4
+									new Sound("/bombGame/sounds/beepLow.wav"),           //5
+									new Sound("/bombGame/sounds/beepLowest.wav"),        //6
+									new Sound("/bombGame/sounds/blowUp.wav"),    		 //7
+									new Sound("/bombGame/sounds/chicken-3.wav"),         //8
+									new Sound("/bombGame/sounds/youFailed.wav"),         //9
+									new Sound("/bombGame/sounds/VictoryLoop.wav"),       //10
+									};
 	
 	public Sound (String fileName) {
 		try {
@@ -75,59 +75,3 @@ public class Sound {
 		return clip.isActive();
 	}
 }
-//import java.io.BufferedInputStream;
-//import java.io.File;
-//import java.io.FileInputStream;
-//import java.io.IOException;
-//
-//import javazoom.jl.decoder.JavaLayerException;
-//import javazoom.jl.player.Player;
-//
-//public class Utils{
-//	private Player player;
-//	
-//	public void playSong(){
-//	    String path = BombGUI.class.getResource("/guiPractice/0SmokeOnTheWaterSample.mp3").getFile();
-//	    File file = new File(path);
-//		try(FileInputStream fis = new FileInputStream(file)){
-//		    BufferedInputStream bis = new BufferedInputStream(fis);    
-//		    player = new Player(bis);
-//		    player.play();
-//		 }catch(IOException | JavaLayerException | NullPointerException e){
-//			 e.printStackTrace();
-//		 }
-//	}
-//}
-////import java.io.FileInputStream;
-////import java.io.IOException;
-////
-////import javazoom.jl.decoder.JavaLayerException;
-////import javazoom.jl.player.Player;
-////
-////public class Utils implements Runnable {
-////	public static volatile boolean flag = true;
-////	private Player player;
-////	
-////	Thread audioPlayer = new Thread(this);
-////
-////	public void playSong() throws JavaLayerException{
-////	    String path = BombGUI.class.getResource("/guiPractice/0SmokeOnTheWaterSample.mp3").getFile();
-////	    File file = new File(path);
-////		try(FileInputStream fis = new FileInputStream(file)){
-////		    BufferedInputStream bis = new BufferedInputStream(fis);    
-////		    player = new Player(bis);
-////		    player.play();
-////		 }catch(IOException | JavaLayerException | NullPointerException e){
-////			 e.printStackTrace();
-////		 }
-////	       
-////
-////	}
-////	public void run(){
-////		try {
-////			this.finalize();
-////		} catch (Throwable e) {
-////			e.printStackTrace();
-////		}
-////	}
-////}

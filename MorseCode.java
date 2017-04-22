@@ -18,7 +18,7 @@ public class MorseCode extends JPanel {
 	private static final long serialVersionUID = -1276379210635329571L;
 	
 	//Might need to be synchronized not volatile IDK
-	protected static volatile Boolean morseCodeWinChecker = true;
+	protected static volatile Boolean morseCodeWinChecker = false;
 	private StringBuilder userInput = new StringBuilder(20);
 	
 	//Months of Year JFMAMJJA
@@ -44,12 +44,14 @@ public class MorseCode extends JPanel {
 				
 		//Bottom Grid
 		JTextArea lblCodeQuestion = new JTextArea("");
+		lblCodeQuestion.setForeground(new Color(128, 0, 0));
 		lblCodeQuestion.setWrapStyleWord(true);
 		createLblCodeQuestion(lblCodeQuestion);
 		add(lblCodeQuestion);
 	}
 
 	private void createButtons(JLabel lblAnswer, JPanel panelDotDashSubmit) {
+		//Middle Panel Visual Stuff Check btn***Function for what it does
 		JButton btnDot = new JButton("");
 		btnDot.setIcon(new ImageIcon(MorseCode.class.getResource("/bombGame/images/BtnDot66.png")));
 		btnDot.setContentAreaFilled(false);
@@ -86,11 +88,12 @@ public class MorseCode extends JPanel {
 		lblCodeQuestion.setLineWrap(true);
 		lblCodeQuestion.setFont(new Font("Monospaced", Font.BOLD, 24));
 		lblCodeQuestion.setOpaque(true);
-		lblCodeQuestion.setBackground(new Color(245, 245, 245));
+		lblCodeQuestion.setBackground(new Color(91, 92, 96));
 		lblCodeQuestion.setText(morseCodeQuestion);
 		lblCodeQuestion.setEditable(false);
 	}
-
+	
+	//Adds Dot and displays
 	private void btnDotFunction(JLabel lblAnswer, JButton btnDot) {
 		btnDot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -99,7 +102,8 @@ public class MorseCode extends JPanel {
 			}
 		});
 	}
-
+	
+	//Adds Dash and displays
 	private void btnDashFunction(JLabel lblAnswer, JButton btnDash) {
 		btnDash.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -129,7 +133,8 @@ public class MorseCode extends JPanel {
 			}
 		});
 	}
-
+	
+	//Checks StringBuilder vs Answer String, On Wrong resets StringBuilder
 	private void btnSubmitFunction(JLabel lblAnswer, JButton btnSubmit) {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -142,7 +147,7 @@ public class MorseCode extends JPanel {
 				else{
 					lblAnswer.setText("");
 					userInput.setLength(0);
-					Sound.Buzzer.play();
+					Sound.gameFx[2].play();
 				}
 			}
 		});
@@ -157,7 +162,7 @@ public class MorseCode extends JPanel {
 	private void createLblAnswer(JLabel lblAnswer) {
 		lblAnswer.setOpaque(true);
 		lblAnswer.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblAnswer.setBackground(new Color(245, 245, 245));
+		lblAnswer.setBackground(new Color(91, 92, 96));
 	}
 	
 	public Boolean getMorseCodeWinChecker() {
